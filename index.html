@@ -24,60 +24,53 @@
 
 <script src="game.min.js"></script>
 <script>
-    var imgUrl = "http://www.3234.com/pictures/0/02/0keVWL.jpg";
-    var lineLink = "http://skycreator.github.io/coolyeqiuquan/";
-    var descContent = '你的得分是：';
-    var shareTitle = '筑天野球拳';
-    var appid = '';
-    var g_score = 0;
-    function shareFriend() {
-        WeixinJSBridge.invoke('sendAppMessage',{
-            "appid": appid,
+    function detectWeixinApi(callback){
+        if(typeof WeixinJSBridge == 'undefined' || typeof WeixinJSBridge.invoke == 'undefined'){
+            setTimeout(function(){
+                detectWeixinApi(callback);
+            },200);
+        }else{
+            callback();
+        }
+    }
+
+    detectWeixinApi(function(){
+
+        var imgUrl = "res/logo.png";
+        var lineLink = "http://192.168.1.108/scrollball/index.html";
+                var shareTitle = '红包大作战';
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage',{
             "img_url": imgUrl,
-            "img_width": "200",
+                "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-            "desc": descContent + score.toString(),
-            "title": shareTitle
-        }, function(res) {
-            //_report('send_msg', res.err_msg);
-        })
-    }
-    function shareTimeline() {
-        WeixinJSBridge.invoke('shareTimeline',{
+                "desc": g_scoreInfo.descContent,
+                "title": shareTitle
+            }, function(res) {
+
+            })
+        }
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline',{
             "img_url": imgUrl,
-            "img_width": "200",
+                "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-            "desc": descContent + score.toString(),
-            "title": shareTitle
-        }, function(res) {
-            //_report('timeline', res.err_msg);
-        });
-    }
-    function shareWeibo() {
-        WeixinJSBridge.invoke('shareWeibo',{
-            "content": descContent + score.toString(),
-            "url": lineLink
-        }, function(res) {
-            //_report('weibo', res.err_msg);
-        });
-    }
-    // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
-    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-        // 发送给好友
-        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                "desc": g_scoreInfo.descContent,
+                "title": shareTitle
+            }, function(res) {
+
+            });
+        }
+
+        WeixinJSBridge.on('menu:share:appmessage', function(argv) {
             shareFriend();
         });
-        // 分享到朋友圈
-        WeixinJSBridge.on('menu:share:timeline', function(argv){
+        WeixinJSBridge.on('menu:share:timeline', function(argv) {
             shareTimeline();
         });
-        // 分享到微博
-        WeixinJSBridge.on('menu:share:weibo', function(argv){
-            shareWeibo();
-        });
-    }, false);
+    });
 </script>
 </body>
 </html>
