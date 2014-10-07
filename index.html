@@ -38,15 +38,15 @@
 
         var imgUrl = "http://www.3234.com/pictures/0/02/0keVWL.jpg";
         var lineLink = "http://skycreator.github.io/coolyeqiuquan/";
-                var shareTitle = '红包大作战';
+        var shareTitle = '筑天野球拳';
         function shareFriend() {
             WeixinJSBridge.invoke('sendAppMessage',{
             "img_url": imgUrl,
-                "img_width": "200",
+            "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-                "desc": g_score,
-                "title": shareTitle
+             "desc": "你的得分是：" + g_score.toString(),
+             "title": shareTitle
             }, function(res) {
 
             })
@@ -54,11 +54,11 @@
         function shareTimeline() {
             WeixinJSBridge.invoke('shareTimeline',{
             "img_url": imgUrl,
-                "img_width": "200",
+            "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-                "desc": g_score,
-                "title": shareTitle
+            "desc": "你的得分是：" + g_score.toString(),
+            "title": shareTitle
             }, function(res) {
 
             });
