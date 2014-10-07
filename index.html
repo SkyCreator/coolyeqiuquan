@@ -36,8 +36,8 @@
 
     detectWeixinApi(function(){
 
-        var imgUrl = "res/logo.png";
-        var lineLink = "http://192.168.1.108/scrollball/index.html";
+        var imgUrl = "http://www.3234.com/pictures/0/02/0keVWL.jpg";
+        var lineLink = "http://skycreator.github.io/coolyeqiuquan/";
                 var shareTitle = '红包大作战';
         function shareFriend() {
             WeixinJSBridge.invoke('sendAppMessage',{
@@ -45,7 +45,7 @@
                 "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-                "desc": g_scoreInfo.descContent,
+                "desc": g_score,
                 "title": shareTitle
             }, function(res) {
 
@@ -57,7 +57,7 @@
                 "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-                "desc": g_scoreInfo.descContent,
+                "desc": g_score,
                 "title": shareTitle
             }, function(res) {
 
