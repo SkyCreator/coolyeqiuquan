@@ -9,6 +9,7 @@
     <meta name="screen-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
     <meta name="360-fullscreen" content="true"/>
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no"/>
     <style>
         body, canvas, div {
             -moz-user-select: none;
@@ -20,7 +21,7 @@
     </style>
 </head>
 <body style="padding:0; margin: 0; background: #000;">
-<canvas id="gameCanvas" width="720" height="1080"></canvas>
+<canvas id="gameCanvas" width="320" height="480"></canvas>
 
 <script src="game.min.js"></script>
 <script>
@@ -39,13 +40,22 @@
         var imgUrl = "http://www.3234.com/pictures/0/02/0keVWL.jpg";
         var lineLink = "http://skycreator.github.io/coolyeqiuquan/";
         var shareTitle = '筑天野球拳';
+        var scoreTitle = [
+            "入门生",
+            "九级","八级","七级", "六级","五级", "四级","三级", "二级","一级",
+            "一段","二段", "三段","四段", "师范代","免许皆传","饿狼","猛虎","飞龙",
+            "钢拳","狂拳","魔拳","修罗","罗刹","罗汉","夜叉","红莲","无双","拳圣",
+            "风神","雷神","鬼神","战神","武神","龙王","铁拳王","铁拳霸皇"
+        ];
         function shareFriend() {
+            var index = 0;
+            index = g_score / 5;
             WeixinJSBridge.invoke('sendAppMessage',{
             "img_url": imgUrl,
             "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-             "desc": "你的得分是：" + g_score.toString(),
+             "desc": "恭喜你得了" + g_score.toString()+"分，你获得了"+scoreTitle[index]+"的称号!",
              "title": shareTitle
             }, function(res) {
 
@@ -57,7 +67,7 @@
             "img_width": "200",
             "img_height": "200",
             "link": lineLink,
-            "desc": "你的得分是：" + g_score.toString(),
+            "desc": "恭喜你得了" + g_score.toString()+"分，你获得了"+scoreTitle[index]+"的称号!",
             "title": shareTitle
             }, function(res) {
 
