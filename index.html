@@ -43,24 +43,24 @@
 
         function shareFriend() {
             WeixinJSBridge.invoke('sendAppMessage',{
-                "img_url": imgUrl,
-                "img_width": "200",
-                "img_height": "200",
-                "link": lineLink,
-                "desc": strTitle,
-                "title": shareTitle
+            "img_url": imgUrl,
+            "img_width": "200",
+            "img_height": "200",
+            "link": lineLink,
+             "desc": strTitle,
+             "title": shareTitle
             }, function(res) {
 
             })
         }
         function shareTimeline() {
             WeixinJSBridge.invoke('shareTimeline',{
-                "img_url": imgUrl,
-                "img_width": "200",
-                "img_height": "200",
-                "link": lineLink,
-                "desc": strTitle,
-                "title": shareTitle
+            "img_url": imgUrl,
+            "img_width": "200",
+            "img_height": "200",
+            "link": lineLink,
+            "desc": strTitle,
+            "title": shareTitle
             }, function(res) {
 
             });
@@ -73,7 +73,6 @@
             shareTimeline();
         });
     });
-
 </script>
 </body>
 </html>
