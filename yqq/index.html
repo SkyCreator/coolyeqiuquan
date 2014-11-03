@@ -38,8 +38,8 @@
     detectWeixinApi(function(){
 
         var imgUrl = "http://www.3234.com/pictures/0/02/0keVWL.jpg";
-        var lineLink = "http://skycreator.github.io/coolyeqiuquan/";
-        var shareTitle = '筑天野球拳';
+        var lineLink = "http://skycreator.github.io/coolyeqiuquan/yqq";
+        var shareTitle = '筑天的野球拳';
 
         function shareFriend() {
             WeixinJSBridge.invoke('sendAppMessage',{
@@ -48,7 +48,7 @@
                 "img_height": "200",
                 "link": lineLink,
                 "desc": strTitle,
-                "title": strTitle
+                "title": shareTitle
             }, function(res) {
 
             })
@@ -60,7 +60,7 @@
                 "img_height": "200",
                 "link": lineLink,
                 "desc": strTitle,
-                "title": strTitle
+                "title": shareTitle
             }, function(res) {
 
             });
